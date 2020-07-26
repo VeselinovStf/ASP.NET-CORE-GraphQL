@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CarvedRock.Models;
+using System;
 using System.Linq;
-using System.Threading.Tasks;
-using CarvedRock.Api.Data.Entities;
 
-namespace CarvedRock.Api.Data
+
+namespace CarvedRock.Data
 {
     public static class InitialData
     {

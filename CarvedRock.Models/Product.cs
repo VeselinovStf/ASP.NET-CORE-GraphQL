@@ -1,12 +1,18 @@
-﻿using System;
+﻿using CarvedRock.Models.Abstraction;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarvedRock.Api.Data.Entities
+namespace CarvedRock.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public int Id { get; set; }
+        public Product()
+        {
+            this.ProductReviews = new HashSet<ProductReview>();
+        }
 
         [StringLength(100)]
         public string Name { get; set; }
@@ -21,5 +27,7 @@ namespace CarvedRock.Api.Data.Entities
 
         [StringLength(100)]
         public string PhotoFileName { get; set; }
+
+        ICollection<ProductReview> ProductReviews { get; set; }
     }
 }

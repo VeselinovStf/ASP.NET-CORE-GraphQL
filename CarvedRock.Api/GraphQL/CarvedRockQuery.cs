@@ -1,16 +1,18 @@
 ﻿using CarvedRock.Api.GraphQL.Types;
-using CarvedRock.Api.Repositories;
+using CarvedRock.Data.Abstraction;
+using CarvedRock.Models;
+using CarvedRock.Repositories;
 using GraphQL.Types;
 
 namespace CarvedRock.Api.GraphQL
 {
-    public class CarvedRockQuery: ObjectGraphType
+    public class CarvedRockQuery : ObjectGraphType
     {
-        public CarvedRockQuery(ProductRepository productRepository)
+        public CarvedRockQuery(IRepository<Product> productRepository)
         {
-            Field<ListGraphType<ProductType>>(
-                "products", 
-                resolve: context => productRepository.GetAll()
+            Field<ListGraphType<GraphQL.Types.ProductType>>(
+                "products",
+                resolve: context =>  productRepository.GetAll()
             );
         }
     }
