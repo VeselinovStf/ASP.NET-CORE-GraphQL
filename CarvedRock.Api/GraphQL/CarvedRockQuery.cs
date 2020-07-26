@@ -1,7 +1,5 @@
-﻿using CarvedRock.Api.GraphQL.Types;
-using CarvedRock.Data.Abstraction;
+﻿using CarvedRock.Data.Abstraction;
 using CarvedRock.Models;
-using CarvedRock.Repositories;
 using GraphQL.Types;
 
 namespace CarvedRock.Api.GraphQL
@@ -12,7 +10,7 @@ namespace CarvedRock.Api.GraphQL
         {
             Field<ListGraphType<GraphQL.Types.ProductType>>(
                 "products",
-                resolve: context =>  productRepository.GetAll()
+                resolve: context => productRepository.GetAll()
             );
         }
     }

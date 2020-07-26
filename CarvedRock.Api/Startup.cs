@@ -1,8 +1,8 @@
 ﻿using CarvedRock.Api.GraphQL;
 using CarvedRock.Data;
 using CarvedRock.Data.Abstraction;
+using CarvedRock.Data.Repositories;
 using CarvedRock.Models;
-using CarvedRock.Repositories;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
@@ -40,6 +40,7 @@ namespace CarvedRock.Api
                 .AddGraphTypes(ServiceLifetime.Scoped);
 
             services.AddScoped<IRepository<Product>, ProductRepository>();
+            services.AddScoped<IRepository<ProductReview>, ProductReviewRepository>();
         }
 
         public void Configure(IApplicationBuilder app, CarvedRockDbContext dbContext)
