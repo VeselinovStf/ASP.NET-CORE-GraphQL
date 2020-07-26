@@ -28,7 +28,7 @@ namespace CarvedRock.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<CarvedRockDbContext>(options =>
+            services.AddDbContextPool<CarvedRockDbContext>(options =>
                 options.UseSqlServer(_config["ConnectionStrings:CarvedRock"]));
 
             services.AddScoped<ProductRepository>();
@@ -37,7 +37,8 @@ namespace CarvedRock.Api
             services.AddScoped<CarvedRockSchema>();
 
             services.AddGraphQL(o => { o.ExposeExceptions = true; })
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Scoped)
+                .AddDataLoader();
 
             services.AddScoped<IRepository<Product>, ProductRepository>();
             services.AddScoped<IRepository<ProductReview>, ProductReviewRepository>();

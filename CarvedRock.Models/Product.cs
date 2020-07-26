@@ -27,6 +27,6 @@ namespace CarvedRock.Models
         [StringLength(100)]
         public string PhotoFileName { get; set; }
 
-        ICollection<ProductReview> ProductReviews { get; set; }
+        public ICollection<ProductReview> ProductReviews { get; set; }
     }
 }

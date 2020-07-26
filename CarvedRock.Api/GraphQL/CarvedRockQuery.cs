@@ -10,7 +10,7 @@ namespace CarvedRock.Api.GraphQL
         {
             Field<ListGraphType<GraphQL.Types.ProductType>>(
                 "products",
-                resolve: context => productRepository.GetAll()
+                resolve: context  =>  productRepository.GetAllAsync()
             );
         }
     }

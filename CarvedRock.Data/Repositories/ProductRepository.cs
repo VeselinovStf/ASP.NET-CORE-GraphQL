@@ -2,6 +2,8 @@
 using CarvedRock.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -16,14 +18,19 @@ namespace CarvedRock.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IList<Product>> GetAll()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
             return await _dbContext.Products.ToListAsync();
         }
 
-        public async Task<Product> Get(int id)
+        public async Task<Product> GetAsync(int id)
         {
             return await this._dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public Task<ILookup<int, Product>> GetForProducts(IEnumerable<int> arg1, CancellationToken arg2)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
